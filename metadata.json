@@ -1,0 +1,8 @@
+{
+  "name": "Kinetics // CSS Motion & Interactive Web Experience",
+  "description": "A high-performance interactive web experience showcasing hardware-accelerated CSS3 keyframe animations, 3D perspective physics, micro-interactions, and pure HTML/CSS architecture.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
+

@@ -1,0 +1,274 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'Space Mono', monospace;
+    --anim-speed-factor: 1;
+    --primary-hue: 250;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #08090d;
+    color: #f1f5f9;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom CSS3 Keyframes for Task 4 Requirements */
+
+@keyframes floatOrbital {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-24px) rotate(180deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(360deg);
+  }
+}
+
+@keyframes orbitSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbitSpinReverse {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes morphMesh {
+  0%, 100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: rotate(0deg) scale(1);
+  }
+  33% {
+    border-radius: 40% 60% 70% 30% / 50% 60% 30% 60%;
+    transform: rotate(120deg) scale(1.08);
+  }
+  66% {
+    border-radius: 70% 30% 50% 50% / 30% 40% 60% 70%;
+    transform: rotate(240deg) scale(0.96);
+  }
+}
+
+@keyframes textShimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+    filter: blur(40px);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.15);
+    filter: blur(55px);
+  }
+}
+
+@keyframes waveBar {
+  0%, 100% {
+    height: 12%;
+    opacity: 0.4;
+  }
+  50% {
+    height: 98%;
+    opacity: 1;
+  }
+}
+
+@keyframes borderRotate {
+  0% {
+    --angle: 0deg;
+  }
+  100% {
+    --angle: 360deg;
+  }
+}
+
+@keyframes floatingCard {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes beaconRing {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+@keyframes marqueeSlide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes shadowTrail {
+  0%, 100% {
+    box-shadow: 
+      0 0 30px rgba(139, 92, 246, 0.5),
+      -10px 14px 28px -4px rgba(139, 92, 246, 0.4),
+      -22px 26px 45px -8px rgba(6, 182, 212, 0.3);
+  }
+  25% {
+    box-shadow: 
+      0 0 30px rgba(139, 92, 246, 0.5),
+      14px -10px 28px -4px rgba(6, 182, 212, 0.4),
+      26px -18px 45px -8px rgba(139, 92, 246, 0.3);
+  }
+  50% {
+    box-shadow: 
+      0 0 30px rgba(6, 182, 212, 0.5),
+      10px 16px 28px -4px rgba(139, 92, 246, 0.4),
+      20px 30px 45px -8px rgba(6, 182, 212, 0.3);
+  }
+  75% {
+    box-shadow: 
+      0 0 30px rgba(139, 92, 246, 0.5),
+      -14px -10px 28px -4px rgba(6, 182, 212, 0.4),
+      -26px -18px 45px -8px rgba(139, 92, 246, 0.3);
+  }
+}
+
+/* Animation Classes with duration control via CSS variable */
+.anim-orbit {
+  animation: orbitSpin calc(24s / var(--anim-speed-factor)) linear infinite;
+}
+
+.anim-orbit-reverse {
+  animation: orbitSpinReverse calc(32s / var(--anim-speed-factor)) linear infinite;
+}
+
+.anim-morph {
+  animation: morphMesh calc(14s / var(--anim-speed-factor)) ease-in-out infinite;
+}
+
+.anim-pulse-glow {
+  animation: pulseGlow calc(8s / var(--anim-speed-factor)) ease-in-out infinite;
+}
+
+.anim-shimmer {
+  background-size: 200% auto;
+  animation: textShimmer calc(5s / var(--anim-speed-factor)) linear infinite;
+}
+
+.anim-float {
+  animation: floatingCard calc(6s / var(--anim-speed-factor)) ease-in-out infinite;
+}
+
+.anim-marquee {
+  animation: marqueeSlide calc(25s / var(--anim-speed-factor)) linear infinite;
+}
+
+.anim-trail {
+  animation: shadowTrail calc(6s / var(--anim-speed-factor)) ease-in-out infinite;
+}
+
+.anim-morph.anim-trail {
+  animation: 
+    morphMesh calc(14s / var(--anim-speed-factor)) ease-in-out infinite,
+    shadowTrail calc(6s / var(--anim-speed-factor)) ease-in-out infinite;
+}
+
+/* Glassmorphism & Visual Effects */
+.glass-panel {
+  background: rgba(18, 20, 29, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel-hover:hover {
+  background: rgba(26, 30, 44, 0.85);
+  border-color: rgba(139, 92, 246, 0.35);
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 20px 40px -15px rgba(139, 92, 246, 0.2);
+}
+
+/* Custom interactive button with luminous hover */
+.luminous-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.luminous-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 20%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent,
+    rgba(255, 255, 255, 0.25),
+    transparent
+  );
+  transform: rotate(25deg);
+  transition: all 0.6s ease;
+}
+
+.luminous-btn:hover::after {
+  left: 140%;
+}
+
+/* Perspective card container */
+.perspective-container {
+  perspective: 1000px;
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #08090d;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #272a37;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3f4459;
+}
+
